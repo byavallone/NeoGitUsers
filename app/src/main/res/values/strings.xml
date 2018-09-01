@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NeoGitUsers</string>
+    <string name="hint_search_here">Search here...</string>
 </resources>
