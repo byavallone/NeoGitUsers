@@ -3,6 +3,7 @@ package com.byavallone.neogitusers;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,13 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     private List<UserProfile> mUsersList;
     private Context mContext;
     private ItemClickListener mClickListener;
+    private String mQueryTerm;
 
-    UserProfileAdapter(Context context, List<UserProfile> userList){
+    UserProfileAdapter(Context context, List<UserProfile> userList, String queryTerm){
         mContext = context;
         mUsersList = userList;
         mInflater = LayoutInflater.from(context);
+        mQueryTerm = queryTerm;
     }
 
     @NonNull
@@ -38,11 +41,25 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         UserProfile user = mUsersList.get(position);
-        viewHolder.mUserNickname.setText(user.getNickName());
+
+        // Construct the formatted text
+        String replacedWith = "<font color='red'>" + mQueryTerm + "</font>";
+
+        // Replace the specified text/word with formatted text/word
+        String modifiedString = user.getNickName().replaceAll(mQueryTerm,replacedWith);
+
+        viewHolder.mUserNickname.setText(Html.fromHtml(modifiedString));
+        viewHolder.mUserRealName.setText(user.getRealName());
+        viewHolder.mUserCompany.setText(user.getCompany());
+        viewHolder.mUserLocation.setText(user.getLocation());
 
         String followers = "Followers: ";
         followers = followers.concat(String.valueOf(user.getFollowers()));
         viewHolder.mUserFollowers.setText(followers);
+
+        String publicRepos = "Public Repos: ";
+        publicRepos = publicRepos.concat(String.valueOf(user.getPublicRepos()));
+        viewHolder.mUserPublicRepos.setText(publicRepos);
         Picasso.with(mContext).load(user.getImageUrl()).into(viewHolder.mUserImage);
     }
 
@@ -74,12 +91,20 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
 
         ImageView mUserImage;
         TextView mUserNickname;
+        TextView mUserRealName;
+        TextView mUserLocation;
+        TextView mUserCompany;
+        TextView mUserPublicRepos;
         TextView mUserFollowers;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mUserImage = itemView.findViewById(R.id.user_picture);
             mUserNickname = itemView.findViewById(R.id.user_nickname_text_view);
+            mUserRealName = itemView.findViewById(R.id.user_real_name_text_view);
+            mUserLocation = itemView.findViewById(R.id.user_location_text_view);
+            mUserCompany = itemView.findViewById(R.id.user_company_text_view);
+            mUserPublicRepos = itemView.findViewById(R.id.user_public_repos_text_view);
             mUserFollowers = itemView.findViewById(R.id.user_followers_text_view);
             itemView.setOnClickListener(this);
         }

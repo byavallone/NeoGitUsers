@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/user_picture"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@android:drawable/ic_menu_gallery"/>
 
     <LinearLayout
@@ -21,12 +21,42 @@
             android:id="@+id/user_nickname_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold|italic"/>
 
         <TextView
+            android:id="@+id/user_real_name_text_view"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
             android:id="@+id/user_followers_text_view"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/user_location_text_view"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_location"/>
+
+        <TextView
+            android:id="@+id/user_company_text_view"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_company"/>
+
+        <TextView
+            android:id="@+id/user_public_repos_text_view"
+            android:layout_marginTop="2dp"
             android:textSize="12sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

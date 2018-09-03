@@ -16,7 +16,6 @@ public class UserProfileAsyncLoader extends android.support.v4.content.AsyncTask
     public UserProfileAsyncLoader(@NonNull Context context, String searchTerm) {
         super(context);
         mSearchTerm = searchTerm;
-        forceLoad();
     }
 
     @Nullable
@@ -36,6 +35,8 @@ public class UserProfileAsyncLoader extends android.support.v4.content.AsyncTask
         }
         if(result != null && !result.isEmpty()) {
             List<UserProfile> userProfileList = NetworkUtils.parseFromUsersResultString(result);
+
+            NetworkUtils.requestExtraInformation(userProfileList);
             return userProfileList;
         }
         return null;

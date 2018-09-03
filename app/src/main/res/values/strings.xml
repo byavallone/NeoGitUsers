@@ -3,4 +3,6 @@
     <string name="hint_search_here">Search here...</string>
     <string name="warning_user_found">No user found!</string>
     <string name="warning_no_internet">Network Issue.</string>
+    <string name="label_company">Company:</string>
+    <string name="label_location">Location:</string>
 </resources>

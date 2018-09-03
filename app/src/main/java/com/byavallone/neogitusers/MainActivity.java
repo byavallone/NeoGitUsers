@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements UserProfileAdapte
                     mContentView.setVisibility(View.GONE);
                     mLoadingBarView.setVisibility(View.VISIBLE);
                     mWarningView.setVisibility(View.GONE);
-                    getSupportLoaderManager().initLoader(1, null, MainActivity.this);
+                    getSupportLoaderManager().restartLoader(1, null, MainActivity.this).forceLoad();
 
                 }else{
                     mWarningView.setVisibility(View.VISIBLE);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements UserProfileAdapte
             mContentView.setVisibility(View.VISIBLE);
 
             if(mAdapter == null){
-                mAdapter = new UserProfileAdapter(MainActivity.this, userProfiles);
+                mAdapter = new UserProfileAdapter(MainActivity.this, userProfiles, mQueryEditText.getText().toString());
                 //Setting this activity to the click listener on the adapter
                 mAdapter.setClickListener(this);
                 mResultsList.setAdapter(mAdapter);
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements UserProfileAdapte
 
     @Override
     public void onLoaderReset(@NonNull Loader<List<UserProfile>> loader) {
-
+            //Do nothing
     }
 
     /**
