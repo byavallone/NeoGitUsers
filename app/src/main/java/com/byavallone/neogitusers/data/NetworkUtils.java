@@ -11,6 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Class used to network requests */
 public class NetworkUtils {
@@ -105,5 +107,20 @@ public class NetworkUtils {
             }
         }
         return output.toString();
+    }
+
+    /**
+     * Method used to parse the result from the API request
+     * @param result
+     * @return
+     */
+    public static List<UserProfile> parseFromUsersResultString(String result) {
+
+        // Create an empty ArrayList that we can start adding users to
+        ArrayList<UserProfile> users = new ArrayList<>();
+
+        //TODO PARSE
+
+        return users;
     }
 }
