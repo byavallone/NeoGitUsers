@@ -26,12 +26,56 @@
             android:src="@android:drawable/ic_menu_search"
             android:background="@android:color/transparent"/>
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
+    <ScrollView
+        android:id="@+id/list_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_result_view">
+        android:visibility="gone">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_result_view">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/loading_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/warning_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/warning_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/warning_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="italic"
+            android:paddingTop="5dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>
