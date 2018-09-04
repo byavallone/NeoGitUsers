@@ -43,21 +43,29 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
         UserProfile user = mUsersList.get(position);
 
         // Construct the formatted text
-        String replacedWith = "<font color='red'>" + mQueryTerm + "</font>";
+        String replacedWith = "<font color='yellow'>" + mQueryTerm + "</font>";
 
         // Replace the specified text/word with formatted text/word
         String modifiedString = user.getNickName().replaceAll(mQueryTerm,replacedWith);
 
         viewHolder.mUserNickname.setText(Html.fromHtml(modifiedString));
-        viewHolder.mUserRealName.setText(user.getRealName());
-        viewHolder.mUserCompany.setText(user.getCompany());
-        viewHolder.mUserLocation.setText(user.getLocation());
+        String realName = mContext.getString(R.string.label_name);
+        realName = realName.concat(String.valueOf(user.getRealName()));
+        viewHolder.mUserRealName.setText(realName);
 
-        String followers = "Followers: ";
+        String company = mContext.getString(R.string.label_company);
+        company = company.concat(String.valueOf(user.getCompany()));
+        viewHolder.mUserCompany.setText(company);
+
+        String location = mContext.getString(R.string.label_location);
+        location = location.concat(String.valueOf(user.getLocation()));
+        viewHolder.mUserLocation.setText(location);
+
+        String followers = mContext.getString(R.string.label_followers);
         followers = followers.concat(String.valueOf(user.getFollowers()));
         viewHolder.mUserFollowers.setText(followers);
 
-        String publicRepos = "Public Repos: ";
+        String publicRepos = mContext.getString(R.string.label_public_repos);
         publicRepos = publicRepos.concat(String.valueOf(user.getPublicRepos()));
         viewHolder.mUserPublicRepos.setText(publicRepos);
         Picasso.with(mContext).load(user.getImageUrl()).into(viewHolder.mUserImage);
@@ -76,12 +84,15 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     public UserProfile getItemInPosition(int position){
         return mUsersList.get(position);
     }
+
     /**
-     * Method used to update the list on the adapter
+     * Method used to update the list on the adapter and the term used to obtain the list
      * @param userList
+     * @param newQuery
      */
-    public void setUsersList(List<UserProfile> userList){
+    public void setNewUsersList(List<UserProfile> userList, String newQuery){
         mUsersList = userList;
+        mQueryTerm = newQuery;
     }
 
     /**

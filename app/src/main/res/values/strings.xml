@@ -5,4 +5,7 @@
     <string name="warning_no_internet">Network Issue.</string>
     <string name="label_company">Company:</string>
     <string name="label_location">Location:</string>
+    <string name="label_followers">Followers:</string>
+    <string name="label_name">Name:</string>
+    <string name="label_public_repos">Public Repos:</string>
 </resources>

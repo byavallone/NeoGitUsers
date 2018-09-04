@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements UserProfileAdapte
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mResultsList.setLayoutManager(layoutManager);
-
+        getSupportLoaderManager().initLoader(1, null, MainActivity.this);
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements UserProfileAdapte
                 mResultsList.setAdapter(mAdapter);
             }else{
 
-                mAdapter.setUsersList(userProfiles);
+                mAdapter.setNewUsersList(userProfiles,mQueryEditText.getText().toString());
                 mAdapter.notifyDataSetChanged();
             }
         }else{
